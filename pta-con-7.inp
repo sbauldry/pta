@@ -1,0 +1,23 @@
+TITLE:
+	Conditional LCA, Full Sample, 7 class, no interactions;
+DATA:
+	FILE = pta-data-mi-3.txt;
+	TYPE = IMPUTATION;
+VARIABLE:	
+	NAMES 		 = aid gswgt4_2 psuscid region w4age female biopar paredu parinc 
+	               livenv gpa colasp obese smoke drink pobese psmoke pdrink edu18 
+	               edu20 edu22 edu24 edu26 edu28 edu30 job18 job20 job22 job24 job26 
+	               job28 job30 rel18 rel20 rel22 rel24 rel26 rel28 rel30 par18 par20 
+	               par22 par24 par26 par28 par30 black hisp orace f_smoke f_drink  
+	               f_obese f_psmoke f_pdrink f_pobese;
+	USEVARIABLES = w4age female-pdrink edu18-par30 black-orace;
+	CATEGORICAL  = edu18-job30 rel18-par30;
+	CLASSES 	 = c(7);
+	WEIGHT 		 = gswgt4_2;
+ANALYSIS:
+	TYPE 	= MIXTURE;
+	STARTS 	= 500 10;
+MODEL:
+	%OVERALL%
+	c ON w4age female-pdrink black-orace;
+

@@ -1,0 +1,22 @@
+TITLE:
+	Unconditional LCA, Full Sample, 4 class;
+DATA:
+	FILE = "pta-data-3.txt";
+VARIABLE:	
+	NAMES 		 = aid gswgt4_2 edu18 edu20 edu22 edu24 edu26 edu28 edu30 job18 job20
+	               job22 job24 job26 job28 job30 rel18 rel20 rel22 rel24 rel26 rel28
+	               rel30 par18 par20 par22 par24 par26 par28 par30;
+	USEVARIABLES = edu18-par30;
+	CATEGORICAL  = edu18-par30;
+	CLASSES 	 = c(4);
+	WEIGHT 		 = gswgt4_2;
+	AUXILIARY    = aid;
+ANALYSIS:
+	TYPE 	= MIXTURE;
+	STARTS 	= 20 10;
+OUTPUT: TECH11;
+SAVEDATA: FILE = "pta 3 unc 4 cprob.txt";
+		  SAVE = CPROB;
+
+
+
